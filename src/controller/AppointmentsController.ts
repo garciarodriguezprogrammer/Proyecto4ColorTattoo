@@ -109,7 +109,7 @@ export class AppointmentsController {
         }
     }
 
-        //Recuperar citas de un cliente
+        //Recuperar  citas  de  un  cliente
     async getAppointmentByClient(req: Request, res: Response) {
         const {id} = req.params;
        

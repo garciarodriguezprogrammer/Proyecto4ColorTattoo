@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt  from "jsonwebtoken";
 
-//Modulo  creado para  que el middleware tenga acceso al usuario
+//Modulo creado para  que el middleware tenga acceso al usuario
 declare module 'express-serve-static-core'{
     interface Request {
         user?: any;

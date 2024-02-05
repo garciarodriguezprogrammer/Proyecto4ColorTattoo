@@ -42,7 +42,7 @@ app.delete("/deleteAppointment/:id", appointmentsController.deleteAppointment);
 //Recuperar citas de cliente por su id
 app.get("/getAppointmentByClient/:id", appointmentsController.getAppointmentByClient);
 
-//Recuperar  citas de artista
+//Recuperar citas de artista
 app.get("/getAppointmentByArtist/:id", appointmentsController.getAppointmentByArtist);
 
 

@@ -25,7 +25,7 @@ export class AppointmentsController {
             if (!artist) {
                 return res.status(404).json({ message: "Artist not found" })
             }
-            //Creacion de la cita
+            //Creacion de una cita
             const newAppointment = await AppDataSource.getRepository(Appointments).create({
                 DATE_TIME,
                 DESCRIPTION_TATTOO,

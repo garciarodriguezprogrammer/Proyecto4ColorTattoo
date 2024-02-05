@@ -37,7 +37,7 @@ export class AppointmentsController {
             const saveAppointment = await AppDataSource.getRepository(Appointments).save(
                 newAppointment
             );
-            //Para que nos devuelva en consola la cita que hemos guardado
+            //Obtener por consola la cita que hemos guardado
             return res.json(saveAppointment);
         }
         catch(error) {
@@ -45,7 +45,7 @@ export class AppointmentsController {
         }
     }
 
-    //Recuperar los appointments
+    //Recuperar las citas
     async getAppointments(req: Request, res: Response) {
         const appointments = await AppDataSource.getRepository(Appointments).find();
         if (!appointments) {
@@ -83,7 +83,7 @@ export class AppointmentsController {
             });
         }
     }
-    //Eliminar una cita cualquiera
+    //Eliminar una cita
     async deleteAppointment(req: Request, res: Response): Promise<Response> {
         const ID_APPOINTMENT = parseInt(req.params.id);
         if(isNaN(ID_APPOINTMENT)) {

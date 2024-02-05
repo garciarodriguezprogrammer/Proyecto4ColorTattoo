@@ -30,7 +30,7 @@ export class AuthController{
                 
             });
 
-            //Guardar el nuevo usuario
+            //Guardar  el  nuevo  usuario
             const saveUser = await AppDataSource.getRepository(Users).save(newUser);
             if (!saveUser){
                 return res.status(500).json({

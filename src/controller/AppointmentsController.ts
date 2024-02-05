@@ -55,7 +55,7 @@ export class AppointmentsController {
         }
         return res.json(appointments);
     }     
-    //Modificar una cita
+    //Modificar  una  cita
     async modifyAppointment(req: Request, res: Response): Promise<Response> {
         const ID_APPOINTMENT = parseInt(req.params.id);
         const dates = req.body;

@@ -59,7 +59,7 @@ export class AuthController{
             }  
         }
     }
-    //Metodo para loguear un usuario
+    //Metodo  para  loguear  un usuario
     async loginUser(req: Request, res: Response): Promise <Response>{
         try {
             const {EMAIL, PASS} = req.body;

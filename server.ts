@@ -21,7 +21,7 @@ app.get("/users", usersController.getAll);
 app.post("/register", authController.register);
 app.post("/login", authController.loginUser);
 
-//Obtener usuarios  por id
+//Obtener usuarios por id
 app.get("/userId/:id", usersController.getById);
 
 //Obtener tatuadores 

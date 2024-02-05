@@ -83,7 +83,7 @@ export class AppointmentsController {
             });
         }
     }
-    //Eliminar una cita
+    //Eliminar una cita cualquiera
     async deleteAppointment(req: Request, res: Response): Promise<Response> {
         const ID_APPOINTMENT = parseInt(req.params.id);
         if(isNaN(ID_APPOINTMENT)) {
@@ -124,7 +124,7 @@ export class AppointmentsController {
             });
         }
     }
-    //Recuperar  las citas de un artista
+    //Recuperar citas de un artista
     async getAppointmentByArtist(req: Request, res: Response) {
         const {id} = req.params;
        

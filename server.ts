@@ -16,7 +16,7 @@ const server = app.listen(port, () => {
     console.log("Server is running")
 });
 
-//Rutas de gestion de usuarios (registrar, loguear y  listar)
+//Rutas de gestion de usuarios (registrar, loguear y listar)
 app.get("/users", usersController.getAll);
 app.post("/register", authController.register);
 app.post("/login", authController.loginUser);

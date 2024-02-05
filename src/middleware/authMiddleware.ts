@@ -9,7 +9,7 @@ declare module 'express-serve-static-core'{
 }
 const secretkey = process.env.JWT_SECRET_KEY || "123456789";
 
-//Verificacion  del token
+//Verificacion del token
 const verifyKey = (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization?.split(" ")[1];
 

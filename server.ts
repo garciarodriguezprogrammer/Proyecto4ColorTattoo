@@ -27,7 +27,7 @@ app.get("/userId/:id", usersController.getById);
 //Obtener tatuadores 
 app.get("/artists", usersController.getArtists);
 
-//Crear una cita
+//Crear  una cita
 app.post("/createAppointment", appointmentsController.createAppointment);
 
 //Recuperar citas

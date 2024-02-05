@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const secretKey = process.env.JWT_SECRET_KEY || "123456789";
-//Clase que se encarga de la autenticacion de los usuarios
+//Clase  que  se  encarga  de la autenticacion de los usuarios
 export class AuthController{     
     //Funcion para registrar usuarios
     async register(req: Request, res: Response): Promise <void|Response<any>> {   

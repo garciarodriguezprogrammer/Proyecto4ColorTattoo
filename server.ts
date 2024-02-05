@@ -33,7 +33,7 @@ app.post("/createAppointment", appointmentsController.createAppointment);
 //Recuperar citas
 app.get("/getAppointments", appointmentsController.getAppointments);
 
-//Modificar cita por ID
+//Modificar  cita por ID
 app.put("/modifyAppointment/:id", appointmentsController.modifyAppointment);
 
 //Eliminar cita por ID

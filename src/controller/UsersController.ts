@@ -8,7 +8,7 @@ export class UsersController{
 
     return res.json(users);
    }
-
+   //Recuperar un usuario por ID
    async getById(req: Request, res: Response){
       const ID_USER = parseInt(req.params.id);
 

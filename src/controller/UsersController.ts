@@ -30,7 +30,7 @@ export class UsersController{
 
       return res.json(user);
    }
-
+      //Recuperar artistas
    async getArtists(req: Request, res: Response){
       const rol = "Artist";
       const artists = await AppDataSource.getRepository(Users).find({

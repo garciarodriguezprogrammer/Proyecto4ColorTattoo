@@ -124,7 +124,7 @@ export class AppointmentsController {
             });
         }
     }
-    //Recuperar citas de un artista
+    //Recuperar  las citas de un artista
     async getAppointmentByArtist(req: Request, res: Response) {
         const {id} = req.params;
        

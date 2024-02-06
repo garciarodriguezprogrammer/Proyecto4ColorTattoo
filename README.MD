@@ -49,7 +49,7 @@ Tecnologías utilizadas:
 
 
 ## Diagrama BD
-!['imagen-db'](./img/diagramaDB.png)
+!['imagen-db'](img/diagramaBD.PNG)
 
 ## Instalación en local
 1. Clonar el repositorio

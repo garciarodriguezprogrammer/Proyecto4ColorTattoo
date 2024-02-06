@@ -21,7 +21,10 @@ app.get("/users", usersController.getAll);
 app.post("/register", authController.register);
 app.post("/login", authController.loginUser);
 
-//Obtener usuarios por id
+//Modificar el perfil del usuario
+app.patch("/modifyProfile/:id", usersController.modifyProfile);
+
+//Obtener perfil de usuarios por id
 app.get("/userId/:id", usersController.getById);
 
 //Obtener tatuadores 
@@ -33,16 +36,19 @@ app.post("/createAppointment", appointmentsController.createAppointment);
 //Recuperar citas
 app.get("/getAppointments", appointmentsController.getAppointments);
 
+//Recuperar citas por su id
+app.get("/getAppointmentById/:id", appointmentsController.getAppointmentById);
+
 //Modificar cita por ID
-app.put("/modifyAppointment/:id", appointmentsController.modifyAppointment);
+app.patch("/modifyAppointment/:id", appointmentsController.modifyAppointment);
 
 //Eliminar cita por ID
 app.delete("/deleteAppointment/:id", appointmentsController.deleteAppointment);
 
-//Recuperar citas de cliente por su id
+//Recuperar citas de cliente por el id del cliente
 app.get("/getAppointmentByClient/:id", appointmentsController.getAppointmentByClient);
 
-//Recuperar citas de artista
+//Recuperar citas de artista por el id del artista
 app.get("/getAppointmentByArtist/:id", appointmentsController.getAppointmentByArtist);
 
 

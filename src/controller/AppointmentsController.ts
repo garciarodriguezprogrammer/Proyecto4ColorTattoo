@@ -54,7 +54,28 @@ export class AppointmentsController {
             })
         }
         return res.json(appointments);
-    }     
+    }   
+    
+    //Recuperar cita por id
+    async getAppointmentById(req: Request, res: Response) {
+        const id = parseInt(req.params.id);
+
+        if (!id) {
+            return res.status(400).json({
+                message: "Id not found"
+            })
+        }
+        const appointment = await AppDataSource.getRepository(Appointments).findOneBy({
+            ID_APPOINTMENT: id 
+        });
+        if (!appointment) {
+            return res.status(400).json({
+                message: "Appointment doesn't exist"
+            });
+        }
+        return res.json(appointment);
+    }
+
     //Modificar  una  cita
     async modifyAppointment(req: Request, res: Response): Promise<Response> {
         const ID_APPOINTMENT = parseInt(req.params.id);

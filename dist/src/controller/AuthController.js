@@ -29,7 +29,9 @@ const data_source_1 = require("../data-source");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const secretKey = process.env.JWT_SECRET_KEY || "123456789";
+//Clase  que  se  encarga  de la autenticacion de los usuarios
 class AuthController {
+    //Funcion  para  registrar  usuarios
     register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { USER_NAME, EMAIL, PASS, ROL } = req.body;
@@ -40,7 +42,7 @@ class AuthController {
                         .status(400)
                         .json({ message: "This user already exists" });
                 }
-                //Esto es para enciptar la contraseña
+                //Esto es para encriptar la contraseña
                 const hashedPassword = yield bcrypt_1.default.hash(req.body.PASS, 10);
                 //Crear usuario con la contraseña ya encriptada
                 const newUser = data_source_1.AppDataSource.getRepository(users_1.Users).create({
@@ -49,7 +51,7 @@ class AuthController {
                     PASS: hashedPassword,
                     ROL: ROL
                 });
-                //Guardar el nuevo usuario
+                //Guardar  el  nuevo  usuario
                 const saveUser = yield data_source_1.AppDataSource.getRepository(users_1.Users).save(newUser);
                 if (!saveUser) {
                     return res.status(500).json({
@@ -80,6 +82,7 @@ class AuthController {
             }
         });
     }
+    //Metodo  para  loguear  un usuario
     loginUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

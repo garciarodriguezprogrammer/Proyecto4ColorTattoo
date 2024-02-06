@@ -19,6 +19,7 @@ class UsersController {
             return res.json(users);
         });
     }
+    //Recuperar un usuario por ID
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const ID_USER = parseInt(req.params.id);
@@ -38,6 +39,7 @@ class UsersController {
             return res.json(user);
         });
     }
+    //Recuperar artistas
     getArtists(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const rol = "Artist";
@@ -49,6 +51,28 @@ class UsersController {
             }
             else {
                 return res.json({ message: "error recovering artists" });
+            }
+        });
+    }
+    modifyProfile(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = parseInt(req.params.id);
+            const profileData = req.body;
+            try {
+                const profile = yield data_source_1.AppDataSource.getRepository(users_1.Users).findOneBy({ ID_USER: id });
+                if (!profile) {
+                    return res.status(404).json({
+                        message: "User not found"
+                    });
+                }
+                data_source_1.AppDataSource.getRepository(users_1.Users).merge(profile, profileData);
+                const updatedUser = yield data_source_1.AppDataSource.getRepository(users_1.Users).save(profile);
+                return res.json(updatedUser);
+            }
+            catch (error) {
+                return res.status(500).json({
+                    message: "Error updating profile"
+                });
             }
         });
     }

@@ -44,6 +44,29 @@ export class UsersController{
          return res.json({message:"error recovering artists"})
       }
    }
+
+   async modifyProfile(req: Request, res: Response){
+      const id = parseInt(req.params.id);
+      const profileData = req.body;
+
+      try {
+         const profile = await AppDataSource.getRepository(Users).findOneBy({ID_USER: id});
+         if (!profile) {
+            return res.status(404).json({
+               message: "User not found"
+            });
+         }
+         AppDataSource.getRepository(Users).merge(profile, profileData);
+         const updatedUser = await AppDataSource.getRepository(Users).save(profile);
+         return res.json(updatedUser);
+      } catch (error) {
+         return res.status(500).json({
+            message: "Error updating profile"
+         });
+      }
+      
+   }
+
 }
 
 

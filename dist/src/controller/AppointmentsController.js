@@ -33,7 +33,7 @@ class AppointmentsController {
                 if (!artist) {
                     return res.status(404).json({ message: "Artist not found" });
                 }
-                //Creacion de la cita
+                //Creacion de una cita
                 const newAppointment = yield data_source_1.AppDataSource.getRepository(appointments_1.Appointments).create({
                     DATE_TIME,
                     DESCRIPTION_TATTOO,
@@ -42,7 +42,7 @@ class AppointmentsController {
                 });
                 //Guardar la cita en la base de datos
                 const saveAppointment = yield data_source_1.AppDataSource.getRepository(appointments_1.Appointments).save(newAppointment);
-                //Para que nos devuelva en consola la cita que hemos guardado
+                //Obtener por consola la cita que hemos guardado
                 return res.json(saveAppointment);
             }
             catch (error) {
@@ -50,7 +50,7 @@ class AppointmentsController {
             }
         });
     }
-    //Recuperar los appointments
+    //Recuperar las citas
     getAppointments(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const appointments = yield data_source_1.AppDataSource.getRepository(appointments_1.Appointments).find();
@@ -62,6 +62,27 @@ class AppointmentsController {
             return res.json(appointments);
         });
     }
+    //Recuperar cita por id
+    getAppointmentById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = parseInt(req.params.id);
+            if (!id) {
+                return res.status(400).json({
+                    message: "Id not found"
+                });
+            }
+            const appointment = yield data_source_1.AppDataSource.getRepository(appointments_1.Appointments).findOneBy({
+                ID_APPOINTMENT: id
+            });
+            if (!appointment) {
+                return res.status(400).json({
+                    message: "Appointment doesn't exist"
+                });
+            }
+            return res.json(appointment);
+        });
+    }
+    //Modificar  una  cita
     modifyAppointment(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const ID_APPOINTMENT = parseInt(req.params.id);
@@ -89,6 +110,7 @@ class AppointmentsController {
             }
         });
     }
+    //Eliminar una cita
     deleteAppointment(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const ID_APPOINTMENT = parseInt(req.params.id);
@@ -115,6 +137,7 @@ class AppointmentsController {
             }
         });
     }
+    //Recuperar  citas  de  un  cliente
     getAppointmentByClient(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
@@ -131,6 +154,7 @@ class AppointmentsController {
             }
         });
     }
+    //Recuperar  citas  de  un  artista
     getAppointmentByArtist(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

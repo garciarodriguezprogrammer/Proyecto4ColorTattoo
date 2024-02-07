@@ -17,7 +17,6 @@
     <li><a href="#contribuciones">Contribuciones</a></li>
     <li><a href="#licencia">Licencia</a></li>
     <li><a href="#webgrafia">Webgrafia</a></li>
-    <li><a href="#desarrollo">Desarrollo</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ol>
@@ -27,7 +26,7 @@
 Este proyecto requería una API funcional conectada a una base de datos 
 
 ## Sobre el proyecto
-Decidí crear una aplicación web para ayudar a los amantes del tatuaje, que les permitiría crear y realizar un seguimiento de sus citas asi como solicitar alguna nueva. 
+He decidido crear una API funcional conectada a la base de datos de un estudio de tatuajes. Esta aplicación está orientada al sistema de gestión de citas y perfiles de usuarios de tal estudio; en ella se distinguen dos entidades principales: las citas y los usuarios, los usuarios se dividen en dos roles: clientes y artistas, y en correspondencia con el rol de cada cual, podrán acceder a la información de sus respectivas citas. Las citas podrán ser modificadas y eliminadas. Los usuarios podrán registrarse, loguearse, y acceder a sus datos de perfil. El perfil de los usuarios podrá ser modificado. Además, en la web se podrá acceder a la lista de artistas disponibles para poder elegir con cuál de ellos el cliente desea hacerse el tatuaje.
 
 
 ## Stack
@@ -71,44 +70,49 @@ http://localhost:3000
         body:
         ``` js
            {
-            "username" : "usuario.prueba.register",
-            "first_name": "prueba",
-            "last_name": "prueba",
-            "password": "123456",
-            "email" : "usuario.prueba.register@example.com"
+            "USER_NAME" : "Juan",
+            "EMAIL": "juan@email.com",
+            "PASS": "123456",
+            "ROL": "artist"
            }
         ```
 
-    - LOGIN
+    - LOGIN USER
 
             POST /login  
         body:
         ``` js
             {
-                
-                 "email": "usuario.prueba.register@example.com",
-                 "password":"123456"
-
+                "email": "manolo@email.com",
+                "password":"123456"
             }
         ```
+
+        - GET ALL USERS 
+
+            GET /users  
+
+
     - USER PROFILE 
 
-            GET /userId/1    
+            GET /userId/1   
+
        
-    - UPDATE PROFILE 
+    - UPDATE USERS PROFILE 
 
             PATCH /modifyProfile/1    
         body:
         ``` js
              {
-                
+              "USER_NAME" : "Newramiro",
+              "EMAIL": "newmanolo@email.com",  
             }
         ```
     
+    - GET ARTISTS
 
-    
+            GET /artists  
 
-        
     - APPOINTMENT CREATION
 
             POST /createAppointment
@@ -116,12 +120,21 @@ http://localhost:3000
         ``` js
             {
                 
-                  "user_id": 1,
-                  "tattoo_artist_id": 1,
-                  "appointment_date": "2024-04-17 10:30:00"
+                  "DATE_TIME": "2024-06-18 10:30:00",
+                  "DESCRIPTION_TATTOO": "Tattoo rosa y verde",
+                  "ID_CLIENT": 4,
+                  "ID_ARTIST": 5
 
             }
         ```
+    - GET ALL APPOINTMENTS
+
+            GET /getAppointments
+
+   - GET APPOINTMENTS BY ID
+
+            GET /getAppointmentById/3         
+
         
     - APPOINTMENT UPDATE
 
@@ -130,9 +143,8 @@ http://localhost:3000
         ``` js
             {
                 
-                  "user_id": 1,
-                  "tattoo_artist_id": 2,
-                  "appointment_date": "2024-04-21 10:30:00"
+                  "DATE_TIME": "2024-02-14 18:00:00",
+                  "DESCRIPTION_TATTOO": "Tattoo black and green"
 
             }
         ```
@@ -191,12 +203,13 @@ Para conseguir mi objetivo he recopilado información de:
 
 ## Agradecimientos:
 
-Agradezco a mis compañeros el tiempo dedicado a este proyecto:
+Agradezco a mi tutor Aissa, a mis profesores del Bootcamp y a mis compañeros por toda la ayuda en este proyecto:
 
 - *Erika*  
 <a href="https://github.com/AkireOrl/" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
 
-
+- *Reynaldo*  
+<a href="https://github.com/ReynaldoMunozF/" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a> 
 
  
 

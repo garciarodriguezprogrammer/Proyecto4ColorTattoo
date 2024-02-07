@@ -16,24 +16,27 @@ app.use(express_1.default.json());
 const server = app.listen(port, () => {
     console.log("Server is running");
 });
-//Rutas de gestion de usuarios (registrar, loguear y listar)
-app.get("/users", usersController.getAll);
-app.post("/register", authController.register);
-app.post("/login", authController.loginUser);
-//Modificar el perfil del usuario
-app.patch("/modifyProfile/:id", usersController.modifyProfile);
+//Rutas de gestion 
+//Registrar usuarios
+app.post("/register", authController.register); //YA
+//Loguear usuarios
+app.post("/login", authController.loginUser); //YA
+//Listar usuarios 
+app.get("/users", usersController.getAll); //YA
 //Obtener perfil de usuarios por id
-app.get("/userId/:id", usersController.getById);
-//Obtener tatuadores 
-app.get("/artists", usersController.getArtists);
+app.get("/userId/:id", usersController.getById); //YA
+//Modificar el perfil del usuario
+app.patch("/modifyProfile/:id", usersController.modifyProfile); //YA
+//Listar tatuadores 
+app.get("/artists", usersController.getArtists); //YA
 //Crear una cita
-app.post("/createAppointment", appointmentsController.createAppointment);
-//Recuperar citas
-app.get("/getAppointments", appointmentsController.getAppointments);
-//Recuperar citas por su id
-app.get("/getAppointmentById/:id", appointmentsController.getAppointmentById);
+app.post("/createAppointment", appointmentsController.createAppointment); //YA
+//Listar citas
+app.get("/getAppointments", appointmentsController.getAppointments); //YA
 //Modificar cita por ID
-app.patch("/modifyAppointment/:id", appointmentsController.modifyAppointment);
+app.patch("/modifyAppointment/:id", appointmentsController.modifyAppointment); //YA
+//Recuperar citas por su ID (De esta forma los clientes podrán acceder solo a sus citas como clientes, y los artistas solo accederán a sus citas como artistas).
+app.get("/getAppointmentById/:id", appointmentsController.getAppointmentById);
 //Eliminar cita por ID
 app.delete("/deleteAppointment/:id", appointmentsController.deleteAppointment);
 //Recuperar citas de cliente por el id del cliente
